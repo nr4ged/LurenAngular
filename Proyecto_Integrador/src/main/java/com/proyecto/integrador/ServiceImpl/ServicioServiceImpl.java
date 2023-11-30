@@ -19,11 +19,10 @@ public class ServicioServiceImpl implements ServicioService{
 		// TODO Auto-generated method stub
 		return repoServicio.findAll();
 	}
-
 	@Override
-    public Servicio ingresarServicio(Servicio objServicio) {
-        // TODO Auto-generated method stub
-        return repoServicio.save(objServicio);
-    }
+	public Servicio ingresarServicio(Servicio objServicio) {
+		// TODO Auto-generated method stub
+		return repoServicio.save(objServicio);
+	}
 
 }

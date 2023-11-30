@@ -21,15 +21,15 @@ public class ServicioController {
 	public List<Servicio>listarServicio(){
 		return servicioService.listarServicio();
 	}
-
+	
 	@PostMapping("Servicio/ingresar")
-    @ResponseBody
-    public Servicio ingresarServicio(@RequestBody Servicio objServicio) {
-        objServicio.getCod_servicio();
-        objServicio.getDescripcion_servicio();
+	@ResponseBody
+	public Servicio ingresarServicio(@RequestBody Servicio objServicio) {
+		objServicio.getCod_servicio();
+		objServicio.getDescripcion_servicio();
 		objServicio.getPrecio();
 
-        return servicioService.ingresarServicio(objServicio);
-    }
+		return servicioService.ingresarServicio(objServicio);
+	}
 	
 }

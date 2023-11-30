@@ -6,5 +6,4 @@ import com.proyecto.integrador.Model.Servicio;
 
 public interface ServicioRepository extends JpaRepository<Servicio, String>{
 
-	
 }
