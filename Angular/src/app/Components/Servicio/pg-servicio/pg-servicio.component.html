@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mantenimiento de Servicio</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+<link href="pg-servicio.component.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        
+
+        <main>
+
+            <div class="analyse">
+                <div class="sales">
+                    <div>
+                        <h3 style="text-align: center;">Mantenimiento de <span class="danger">Servicio</span></h3>
+						<br>
+                        <div class="user-list">
+                            <form [formGroup]="frmServicio" (ngSubmit)="guardarServicio()" >
+
+                                <div class="form-group">
+									<label for="inputCod">Codigo Servicio</label> <input type="text"
+										class="form-control" id="inputCod"
+										placeholder="Codigo" name="cod_servicio"
+										formControlName="cod_servicio" required>
+								</div>
+                                <br>
+								<div class="form-group">
+									<label for="inputDes">Descripcion Servicio</label> <input
+										type="text" class="form-control" id="inputDes"
+										placeholder="Descripcion" name="descripcion_servicio"
+										formControlName="descripcion_servicio" required>
+								</div>
+								<br>
+                                <div class="form-group">
+									<label for="inputPre">Precio</label> <input type="number"
+										class="form-control" id="inputPre" placeholder="Precio"
+										name="precio" formControlName="precio" required>
+								</div>
+								<br>
+                                <div class="btn-container">
+									<button type="submit" name="action" value="registrar"
+										class="btn btn-success">Registrar</button>
+									<button type="submit" name="action" value="actualizar"
+										class="btn btn-success">Actualizar</button>
+									<button type="submit" name="action" value="eliminar"
+										class="btn btn-success">Eliminar</button>
+									<button type="button" class="btn btn-success"
+										onclick="limpiarCampos()">Limpiar</button>
+								</div>
+                                <button class="btn btn-primary mt-2" >Guardar</button>
+                            </form>
+                            <div th:text="${mensaje}"></div>
+                        </div>
+                    </div>
+                </div>
+            
+
+                <div class="sales">
+                <h2 style="text-align: center;"><span class="danger">Servicios</span> Disponibles</h2>
+                <div>
+                <table id="id_table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+							<th>Descripcion Servicio</th>
+							<th>Precio</th>
+							<th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let servicio of data">
+							<th scope="row">{{servicio.cod_servicio}}</th>
+							<td>{{servicio.descripcion_servicio}}</td>
+							<td>{{servicio.precio}}</td>
+							<td>
+                                <form
+									th:action="@{/PgServicio/editar/{codServicio}(codServicio=${s.cod_servicio})}"
+									method="get">
+									<button type="submit" class="btn btn-link p-0">
+										<img
+											src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-3/24/edit-256.png"
+											style="width: 30px;">
+									        </button>
+								        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="pagination" style="text-align: center; margin-top: 20px;">
+                            <div id="buttonsContainer">
+                                <button id="prevBtn" style="color: #fff; background-color: #1C9028">Anterior</button>
+                                <button id="nextBtn" style="color: #fff; background-color: #1C9028">Siguiente</button>
+                            </div>
+                            <span id="currentPage"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+    "/Servicio/*":{
+        "target": "http://localhost:8080",
+        "secure": false,
+        "changeOrigin": true,
+        "loglevel": "debug",
+        "pathWrite": {"^/Servicio": "http://localhost:8080/Servicio"}
+    }
+}
